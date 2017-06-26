@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
 using ChildrensGame.Model;
+using ChildrensGame.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ChildrensGameTests
+namespace ChildrensGameTests.Repository
 {
     /// <summary>
     /// Summary description for GameParameterRestRepositoryTests

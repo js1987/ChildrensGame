@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ChildrensGame.Model;
 
 namespace ChildrensGame.Presenter
@@ -17,7 +14,7 @@ namespace ChildrensGame.Presenter
         /// <returns></returns>
         public GameResult CalculateGameResult(GameParameter gameParameter)
         {
-            GameResult gameResult = new GameResult();
+            var gameResult = new GameResult();
             gameResult.Id = gameParameter.Id;
             try
             {

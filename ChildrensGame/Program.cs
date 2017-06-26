@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using ChildrensGame.Model;
 using ChildrensGame.View;
 using ChildrensGame.Presenter;
+using ChildrensGame.Repository;
 
 namespace ChildrensGame
 {

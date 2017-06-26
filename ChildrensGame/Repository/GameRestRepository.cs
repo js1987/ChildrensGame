@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using ChildrensGame.Model;
 using Newtonsoft.Json;
 
-namespace ChildrensGame.Model
+namespace ChildrensGame.Repository
 {
     public class GameRestRepository : IGameRepository
     {

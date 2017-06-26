@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ChildrensGame.View
@@ -15,28 +14,6 @@ namespace ChildrensGame.View
             lblWinning.Text = "";
             rtbChildrenEliminateSequence.Text = "";
             lblPostResult.Text = "";
-        }
-
-        /// <summary>
-        /// Gets the number of children.
-        /// </summary>
-        /// <value>
-        /// The number of children.
-        /// </value>
-        public int NumberOfChildren
-        {
-            get { return (int)nudNumberOfChildren.Value; }
-        }
-
-        /// <summary>
-        /// Gets the eliminate each.
-        /// </summary>
-        /// <value>
-        /// The eliminate each.
-        /// </value>
-        public int EliminateEach
-        {
-            get { return (int)nudEliminateEach.Value; }
         }
 
         /// <summary>

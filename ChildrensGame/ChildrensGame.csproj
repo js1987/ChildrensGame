@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ChildrensGame</RootNamespace>
     <AssemblyName>ChildrensGame</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,23 +51,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\GameParameter.cs" />
-    <Compile Include="Model\GameRestRepository.cs" />
+    <Compile Include="Repository\GameRestRepository.cs" />
     <Compile Include="Model\GameResult.cs" />
     <Compile Include="Model\GameResultPostResponse.cs" />
-    <Compile Include="Model\IGameRepository.cs" />
+    <Compile Include="Repository\IGameRepository.cs" />
     <Compile Include="Presenter\ChildrensGameManager.cs" />
     <Compile Include="Presenter\ChildrensGamePresenter.cs" />
-    <Compile Include="View\ChildrensGameForm.cs">
+    <Compile Include="View\ChildrensGameView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\ChildrensGameForm.Designer.cs">
-      <DependentUpon>ChildrensGameForm.cs</DependentUpon>
+    <Compile Include="View\ChildrensGameView.Designer.cs">
+      <DependentUpon>ChildrensGameView.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\IChildrenGameView.cs" />
-    <EmbeddedResource Include="View\ChildrensGameForm.resx">
-      <DependentUpon>ChildrensGameForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\ChildrensGameView.resx">
+      <DependentUpon>ChildrensGameView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

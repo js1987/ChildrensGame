@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ChildrensGame.Model;
+using ChildrensGame.Repository;
 using ChildrensGame.View;
 
 namespace ChildrensGame.Presenter
@@ -25,9 +22,10 @@ namespace ChildrensGame.Presenter
             _gameView.NewGameButtonClicked += GameViewNewGameButtonClicked;
         }
 
-        private async void GameViewNewGameButtonClicked(object sender, EventArgs e)
+        public async void GameViewNewGameButtonClicked(object sender, EventArgs e)
         {
             _gameView.ShowLoading();
+
             //Start a new game, load data  
             var gameParameter = await _gameRepository.GetGameParameter();
             if (gameParameter != null)
@@ -42,34 +40,34 @@ namespace ChildrensGame.Presenter
                 return;
             }
 
-            var gameManager = new ChildrensGameManager();
             //Calculate game result
+            var gameManager = new ChildrensGameManager();
             GameResult gameResult = null;
-            gameResult = gameManager.CalculateGameResult(gameParameter);
+            gameResult = gameManager.CalculateGameResult(gameParameter); 
             if (gameResult != null)
             {
+                //Display winning
                 _gameView.SetWinningChildren(gameResult.LastChild.ToString());
+
+                //Display eliminated list
+                string eliminateSeq = "";
+                for (var i = 0; i < gameResult.OrderOfElimination.Length; i++)
+                {
+                    eliminateSeq += gameResult.OrderOfElimination[i].ToString();
+                    eliminateSeq += i != gameResult.OrderOfElimination.Length - 1 ? ", " : "";
+                }
+                _gameView.SetChildrenEliminatedSequence(eliminateSeq);
             }
             else
             {
                 _gameView.ShowErrorMessage($@"Unable to get game result from {_gameRepository.Url}. Please check this Url is correct.");
                 _gameView.HideLoading();
-                return;
             }
-
-            string eliminateSeq = "";
-            for (var i = 0; i < gameResult.OrderOfElimination.Length; i++)
-            {
-                eliminateSeq += gameResult.OrderOfElimination[i].ToString();
-                eliminateSeq += i != gameResult.OrderOfElimination.Length - 1 ? ", " : "";
-            }
-            _gameView.SetChildrenEliminatedSequence(eliminateSeq);
 
             //Post game result
             if (Properties.Settings.Default.PostData)
             {
                 GameResultPostResponse resultResponse = null;
-
                     resultResponse = await _gameRepository.SetGameResult(gameResult);
                     if (resultResponse != null)                    
                         _gameView.SetPostResult($@"{resultResponse.Id}, {resultResponse.Message}");                    

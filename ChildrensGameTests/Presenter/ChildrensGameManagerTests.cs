@@ -1,12 +1,13 @@
 ﻿using System.Threading.Tasks;
 using ChildrensGame.Model;
 using ChildrensGame.Presenter;
+using ChildrensGame.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
 namespace ChildrensGameTests.Presenter
 {
-    [TestClass()]
+    [TestClass]
     public class ChildrensGameManagerTests
     {
         [TestMethod]

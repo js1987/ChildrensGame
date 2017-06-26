@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChildrensGameView));
             this.label1 = new System.Windows.Forms.Label();
             this.nudNumberOfChildren = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,12 +43,15 @@
             this.gbPostResult = new System.Windows.Forms.GroupBox();
             this.lblPostResult = new System.Windows.Forms.Label();
             this.pbLoading = new System.Windows.Forms.PictureBox();
+            this.gbWelcome = new System.Windows.Forms.GroupBox();
+            this.lblWelcome = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumberOfChildren)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudEliminateEach)).BeginInit();
             this.gbInput.SuspendLayout();
             this.gbOutput.SuspendLayout();
             this.gbPostResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
+            this.gbWelcome.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -86,13 +90,11 @@
             // 
             // gbInput
             // 
-            this.gbInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbInput.Controls.Add(this.label1);
             this.gbInput.Controls.Add(this.nudEliminateEach);
             this.gbInput.Controls.Add(this.nudNumberOfChildren);
             this.gbInput.Controls.Add(this.label2);
-            this.gbInput.Location = new System.Drawing.Point(12, 12);
+            this.gbInput.Location = new System.Drawing.Point(12, 169);
             this.gbInput.Name = "gbInput";
             this.gbInput.Size = new System.Drawing.Size(215, 80);
             this.gbInput.TabIndex = 4;
@@ -101,16 +103,13 @@
             // 
             // gbOutput
             // 
-            this.gbOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbOutput.Controls.Add(this.rtbChildrenEliminateSequence);
             this.gbOutput.Controls.Add(this.lblWinning);
             this.gbOutput.Controls.Add(this.label4);
             this.gbOutput.Controls.Add(this.label3);
-            this.gbOutput.Location = new System.Drawing.Point(12, 98);
+            this.gbOutput.Location = new System.Drawing.Point(12, 255);
             this.gbOutput.Name = "gbOutput";
-            this.gbOutput.Size = new System.Drawing.Size(309, 134);
+            this.gbOutput.Size = new System.Drawing.Size(309, 144);
             this.gbOutput.TabIndex = 5;
             this.gbOutput.TabStop = false;
             this.gbOutput.Text = "Output";
@@ -123,8 +122,9 @@
             this.rtbChildrenEliminateSequence.Location = new System.Drawing.Point(9, 67);
             this.rtbChildrenEliminateSequence.Name = "rtbChildrenEliminateSequence";
             this.rtbChildrenEliminateSequence.ReadOnly = true;
-            this.rtbChildrenEliminateSequence.Size = new System.Drawing.Size(294, 61);
+            this.rtbChildrenEliminateSequence.Size = new System.Drawing.Size(294, 71);
             this.rtbChildrenEliminateSequence.TabIndex = 4;
+            this.rtbChildrenEliminateSequence.TabStop = false;
             this.rtbChildrenEliminateSequence.Text = "{{Eliminate Sequence}}";
             // 
             // lblWinning
@@ -158,7 +158,7 @@
             // 
             this.btnNewGame.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNewGame.Location = new System.Drawing.Point(233, 15);
+            this.btnNewGame.Location = new System.Drawing.Point(233, 172);
             this.btnNewGame.Name = "btnNewGame";
             this.btnNewGame.Size = new System.Drawing.Size(88, 47);
             this.btnNewGame.TabIndex = 6;
@@ -169,7 +169,7 @@
             // gbPostResult
             // 
             this.gbPostResult.Controls.Add(this.lblPostResult);
-            this.gbPostResult.Location = new System.Drawing.Point(12, 238);
+            this.gbPostResult.Location = new System.Drawing.Point(12, 395);
             this.gbPostResult.Name = "gbPostResult";
             this.gbPostResult.Size = new System.Drawing.Size(309, 67);
             this.gbPostResult.TabIndex = 7;
@@ -188,7 +188,7 @@
             // pbLoading
             // 
             this.pbLoading.Image = global::ChildrensGame.Properties.Resources.ajax_loader;
-            this.pbLoading.Location = new System.Drawing.Point(233, 65);
+            this.pbLoading.Location = new System.Drawing.Point(233, 222);
             this.pbLoading.Name = "pbLoading";
             this.pbLoading.Size = new System.Drawing.Size(88, 27);
             this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -196,11 +196,30 @@
             this.pbLoading.TabStop = false;
             this.pbLoading.Visible = false;
             // 
+            // gbWelcome
+            // 
+            this.gbWelcome.Controls.Add(this.lblWelcome);
+            this.gbWelcome.Location = new System.Drawing.Point(11, 12);
+            this.gbWelcome.Name = "gbWelcome";
+            this.gbWelcome.Size = new System.Drawing.Size(310, 151);
+            this.gbWelcome.TabIndex = 8;
+            this.gbWelcome.TabStop = false;
+            this.gbWelcome.Text = "Welcome";
+            // 
+            // lblWelcome
+            // 
+            this.lblWelcome.Location = new System.Drawing.Point(7, 18);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(297, 119);
+            this.lblWelcome.TabIndex = 0;
+            this.lblWelcome.Text = resources.GetString("lblWelcome.Text");
+            // 
             // ChildrensGameView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(333, 317);
+            this.ClientSize = new System.Drawing.Size(333, 471);
+            this.Controls.Add(this.gbWelcome);
             this.Controls.Add(this.pbLoading);
             this.Controls.Add(this.gbPostResult);
             this.Controls.Add(this.btnNewGame);
@@ -218,6 +237,7 @@
             this.gbPostResult.ResumeLayout(false);
             this.gbPostResult.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).EndInit();
+            this.gbWelcome.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -238,6 +258,8 @@
         private System.Windows.Forms.GroupBox gbPostResult;
         private System.Windows.Forms.Label lblPostResult;
         private System.Windows.Forms.PictureBox pbLoading;
+        private System.Windows.Forms.GroupBox gbWelcome;
+        private System.Windows.Forms.Label lblWelcome;
     }
 }
 
