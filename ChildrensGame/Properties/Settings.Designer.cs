@@ -25,24 +25,6 @@ namespace ChildrensGame.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int MaxNumberOfChildren {
-            get {
-                return ((int)(this["MaxNumberOfChildren"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int MaxEliminateEach {
-            get {
-                return ((int)(this["MaxEliminateEach"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://7annld7mde.execute-api.ap-southeast-2.amazonaws.com/main/game")]
         public string GameParameterAPIAddress {
             get {

@@ -1,5 +1,4 @@
 ﻿using System;
-using ChildrensGame.Model;
 using ChildrensGame.Repository;
 using ChildrensGame.View;
 
@@ -35,15 +34,14 @@ namespace ChildrensGame.Presenter
             }
             else
             {
-                _gameView.ShowErrorMessage($@"Unable to get game parameter from {_gameRepository.Url}. Please check this Url is correct.");
+                _gameView.ShowErrorMessage($@"Unable to get game parameter from {_gameRepository.Url}. Please check the internet connection and if this Url is correct.");
                 _gameView.HideLoading();
                 return;
             }
 
             //Calculate game result
             var gameManager = new ChildrensGameManager();
-            GameResult gameResult = null;
-            gameResult = gameManager.CalculateGameResult(gameParameter); 
+            var gameResult = gameManager.CalculateGameResult(gameParameter); 
             if (gameResult != null)
             {
                 //Display winning
@@ -67,12 +65,11 @@ namespace ChildrensGame.Presenter
             //Post game result
             if (Properties.Settings.Default.PostData)
             {
-                GameResultPostResponse resultResponse = null;
-                    resultResponse = await _gameRepository.SetGameResult(gameResult);
-                    if (resultResponse != null)                    
+                var resultResponse = await _gameRepository.SetGameResult(gameResult);
+                if (resultResponse != null)                    
                         _gameView.SetPostResult($@"{resultResponse.Id}, {resultResponse.Message}");                    
                     else
-                        _gameView.ShowErrorMessage("Unable to post game result.");                
+                        _gameView.ShowErrorMessage("Unable to post game result.");
             }
             else            
                 _gameView.SetPostResult("Post data is disabled");            
