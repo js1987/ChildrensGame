@@ -31,14 +31,5 @@ namespace ChildrensGame.Properties {
                 return ((string)(this["GameParameterAPIAddress"]));
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool PostData {
-            get {
-                return ((bool)(this["PostData"]));
-            }
-        }
     }
 }

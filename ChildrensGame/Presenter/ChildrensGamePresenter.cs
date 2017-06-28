@@ -41,7 +41,7 @@ namespace ChildrensGame.Presenter
 
             //Calculate game result
             var gameManager = new ChildrensGameManager();
-            var gameResult = gameManager.CalculateGameResult(gameParameter); 
+            var gameResult = gameManager.CalculateGameResult(gameParameter);
             if (gameResult != null)
             {
                 //Display winning
@@ -58,21 +58,16 @@ namespace ChildrensGame.Presenter
             }
             else
             {
-                _gameView.ShowErrorMessage($@"Unable to get game result from {_gameRepository.Url}. Please check this Url is correct.");
+                _gameView.ShowErrorMessage($@"Sorry, we are unable to calculate the result for {gameParameter.ChildrenCount} children and eliminate every {gameParameter.EliminateEach}");
                 _gameView.HideLoading();
             }
 
             //Post game result
-            if (Properties.Settings.Default.PostData)
-            {
-                var resultResponse = await _gameRepository.SetGameResult(gameResult);
-                if (resultResponse != null)                    
-                        _gameView.SetPostResult($@"{resultResponse.Id}, {resultResponse.Message}");                    
-                    else
-                        _gameView.ShowErrorMessage("Unable to post game result.");
-            }
-            else            
-                _gameView.SetPostResult("Post data is disabled");            
+            var resultResponse = await _gameRepository.SetGameResult(gameResult);
+            if (resultResponse != null)
+                _gameView.SetPostResult($@"{resultResponse.Id}, {resultResponse.Message}");
+            else
+                _gameView.ShowErrorMessage("Unable to post game result.");
 
             _gameView.HideLoading();
         }

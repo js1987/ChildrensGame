@@ -57,35 +57,39 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 18);
+            this.label1.Location = new System.Drawing.Point(4, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 17);
+            this.label1.Size = new System.Drawing.Size(97, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Number of Children";
             // 
             // nudNumberOfChildren
             // 
             this.nudNumberOfChildren.Enabled = false;
-            this.nudNumberOfChildren.Location = new System.Drawing.Point(142, 16);
+            this.nudNumberOfChildren.Location = new System.Drawing.Point(106, 13);
+            this.nudNumberOfChildren.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nudNumberOfChildren.Name = "nudNumberOfChildren";
-            this.nudNumberOfChildren.Size = new System.Drawing.Size(64, 22);
+            this.nudNumberOfChildren.Size = new System.Drawing.Size(48, 20);
             this.nudNumberOfChildren.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 48);
+            this.label2.Location = new System.Drawing.Point(4, 39);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 17);
+            this.label2.Size = new System.Drawing.Size(77, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Eliminate Each";
             // 
             // nudEliminateEach
             // 
             this.nudEliminateEach.Enabled = false;
-            this.nudEliminateEach.Location = new System.Drawing.Point(142, 46);
+            this.nudEliminateEach.Location = new System.Drawing.Point(106, 37);
+            this.nudEliminateEach.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nudEliminateEach.Name = "nudEliminateEach";
-            this.nudEliminateEach.Size = new System.Drawing.Size(64, 22);
+            this.nudEliminateEach.Size = new System.Drawing.Size(48, 20);
             this.nudEliminateEach.TabIndex = 3;
             // 
             // gbInput
@@ -94,9 +98,11 @@
             this.gbInput.Controls.Add(this.nudEliminateEach);
             this.gbInput.Controls.Add(this.nudNumberOfChildren);
             this.gbInput.Controls.Add(this.label2);
-            this.gbInput.Location = new System.Drawing.Point(12, 169);
+            this.gbInput.Location = new System.Drawing.Point(9, 137);
+            this.gbInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbInput.Name = "gbInput";
-            this.gbInput.Size = new System.Drawing.Size(215, 80);
+            this.gbInput.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbInput.Size = new System.Drawing.Size(161, 65);
             this.gbInput.TabIndex = 4;
             this.gbInput.TabStop = false;
             this.gbInput.Text = "Input";
@@ -107,9 +113,11 @@
             this.gbOutput.Controls.Add(this.lblWinning);
             this.gbOutput.Controls.Add(this.label4);
             this.gbOutput.Controls.Add(this.label3);
-            this.gbOutput.Location = new System.Drawing.Point(12, 255);
+            this.gbOutput.Location = new System.Drawing.Point(9, 207);
+            this.gbOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbOutput.Name = "gbOutput";
-            this.gbOutput.Size = new System.Drawing.Size(309, 144);
+            this.gbOutput.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbOutput.Size = new System.Drawing.Size(232, 117);
             this.gbOutput.TabIndex = 5;
             this.gbOutput.TabStop = false;
             this.gbOutput.Text = "Output";
@@ -119,10 +127,11 @@
             this.rtbChildrenEliminateSequence.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtbChildrenEliminateSequence.Location = new System.Drawing.Point(9, 67);
+            this.rtbChildrenEliminateSequence.Location = new System.Drawing.Point(7, 54);
+            this.rtbChildrenEliminateSequence.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rtbChildrenEliminateSequence.Name = "rtbChildrenEliminateSequence";
             this.rtbChildrenEliminateSequence.ReadOnly = true;
-            this.rtbChildrenEliminateSequence.Size = new System.Drawing.Size(294, 71);
+            this.rtbChildrenEliminateSequence.Size = new System.Drawing.Size(222, 58);
             this.rtbChildrenEliminateSequence.TabIndex = 4;
             this.rtbChildrenEliminateSequence.TabStop = false;
             this.rtbChildrenEliminateSequence.Text = "{{Eliminate Sequence}}";
@@ -130,27 +139,30 @@
             // lblWinning
             // 
             this.lblWinning.AutoSize = true;
-            this.lblWinning.Location = new System.Drawing.Point(71, 18);
+            this.lblWinning.Location = new System.Drawing.Point(53, 15);
+            this.lblWinning.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblWinning.Name = "lblWinning";
-            this.lblWinning.Size = new System.Drawing.Size(79, 17);
+            this.lblWinning.Size = new System.Drawing.Size(62, 13);
             this.lblWinning.TabIndex = 2;
             this.lblWinning.Text = "{{Winning}}";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 18);
+            this.label4.Location = new System.Drawing.Point(4, 15);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 17);
+            this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 1;
             this.label4.Text = "Winning:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 47);
+            this.label3.Location = new System.Drawing.Point(4, 38);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(193, 17);
+            this.label3.Size = new System.Drawing.Size(145, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "Children Eliminate Sequence:";
             // 
@@ -158,9 +170,10 @@
             // 
             this.btnNewGame.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNewGame.Location = new System.Drawing.Point(233, 172);
+            this.btnNewGame.Location = new System.Drawing.Point(175, 140);
+            this.btnNewGame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnNewGame.Name = "btnNewGame";
-            this.btnNewGame.Size = new System.Drawing.Size(88, 47);
+            this.btnNewGame.Size = new System.Drawing.Size(66, 38);
             this.btnNewGame.TabIndex = 6;
             this.btnNewGame.Text = "New Game";
             this.btnNewGame.UseVisualStyleBackColor = true;
@@ -169,9 +182,11 @@
             // gbPostResult
             // 
             this.gbPostResult.Controls.Add(this.lblPostResult);
-            this.gbPostResult.Location = new System.Drawing.Point(12, 395);
+            this.gbPostResult.Location = new System.Drawing.Point(9, 321);
+            this.gbPostResult.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbPostResult.Name = "gbPostResult";
-            this.gbPostResult.Size = new System.Drawing.Size(309, 67);
+            this.gbPostResult.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbPostResult.Size = new System.Drawing.Size(232, 54);
             this.gbPostResult.TabIndex = 7;
             this.gbPostResult.TabStop = false;
             this.gbPostResult.Text = "Post Result";
@@ -179,18 +194,20 @@
             // lblPostResult
             // 
             this.lblPostResult.AutoSize = true;
-            this.lblPostResult.Location = new System.Drawing.Point(6, 18);
+            this.lblPostResult.Location = new System.Drawing.Point(4, 15);
+            this.lblPostResult.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPostResult.Name = "lblPostResult";
-            this.lblPostResult.Size = new System.Drawing.Size(96, 17);
+            this.lblPostResult.Size = new System.Drawing.Size(74, 13);
             this.lblPostResult.TabIndex = 0;
             this.lblPostResult.Text = "{{PostResult}}";
             // 
             // pbLoading
             // 
             this.pbLoading.Image = global::ChildrensGame.Properties.Resources.ajax_loader;
-            this.pbLoading.Location = new System.Drawing.Point(233, 222);
+            this.pbLoading.Location = new System.Drawing.Point(175, 180);
+            this.pbLoading.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbLoading.Name = "pbLoading";
-            this.pbLoading.Size = new System.Drawing.Size(88, 27);
+            this.pbLoading.Size = new System.Drawing.Size(66, 22);
             this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbLoading.TabIndex = 1;
             this.pbLoading.TabStop = false;
@@ -199,26 +216,29 @@
             // gbWelcome
             // 
             this.gbWelcome.Controls.Add(this.lblWelcome);
-            this.gbWelcome.Location = new System.Drawing.Point(11, 12);
+            this.gbWelcome.Location = new System.Drawing.Point(8, 10);
+            this.gbWelcome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbWelcome.Name = "gbWelcome";
-            this.gbWelcome.Size = new System.Drawing.Size(310, 151);
+            this.gbWelcome.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbWelcome.Size = new System.Drawing.Size(232, 123);
             this.gbWelcome.TabIndex = 8;
             this.gbWelcome.TabStop = false;
             this.gbWelcome.Text = "Welcome";
             // 
             // lblWelcome
             // 
-            this.lblWelcome.Location = new System.Drawing.Point(7, 18);
+            this.lblWelcome.Location = new System.Drawing.Point(5, 15);
+            this.lblWelcome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(297, 119);
+            this.lblWelcome.Size = new System.Drawing.Size(223, 97);
             this.lblWelcome.TabIndex = 0;
             this.lblWelcome.Text = resources.GetString("lblWelcome.Text");
             // 
             // ChildrensGameView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(333, 471);
+            this.ClientSize = new System.Drawing.Size(250, 383);
             this.Controls.Add(this.gbWelcome);
             this.Controls.Add(this.pbLoading);
             this.Controls.Add(this.gbPostResult);
@@ -226,8 +246,9 @@
             this.Controls.Add(this.gbOutput);
             this.Controls.Add(this.gbInput);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ChildrensGameView";
-            this.Text = "Children\'s Gane";
+            this.Text = "Children\'s Game";
             ((System.ComponentModel.ISupportInitialize)(this.nudNumberOfChildren)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudEliminateEach)).EndInit();
             this.gbInput.ResumeLayout(false);
