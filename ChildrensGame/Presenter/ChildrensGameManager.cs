@@ -18,38 +18,38 @@ namespace ChildrensGame.Presenter
             var gameResult = new GameResult {Id = gameParameter.Id};
             try
             {
-                const int start = 1;
-
-                var eliminated = new int[gameParameter.ChildrenCount];
+                var playerList = new int[gameParameter.ChildrenCount];
                 var eliminateList = new ArrayList();
-                var orderNum = 1;
-                var remaining = (start - 1) % gameParameter.ChildrenCount;
-                var countNumber = 0;
+                var roundNumber = 1;
+                var startingIndex = 0;
+                var eliminatedCounter = 0;
                 var winner = 0;
 
-                while (countNumber < gameParameter.ChildrenCount - 1)
+                // Continue eliminating untile 1 player left
+                while (eliminatedCounter < gameParameter.ChildrenCount - 1)
                 {
-                    if (((orderNum % gameParameter.EliminateEach) | eliminated[remaining]) == 0)
+                    if (((roundNumber % gameParameter.EliminateEach) | playerList[startingIndex]) == 0)
                     {
-                        eliminated[remaining] = 1;
-                        eliminateList.Add(remaining + 1);
-                        countNumber++;
-                        orderNum++;
+                        playerList[startingIndex] = 1;
+                        eliminateList.Add(startingIndex + 1);
+                        eliminatedCounter++;
+                        roundNumber++;
                     }
-                    if (eliminated[remaining] != 1)
-                        orderNum++;
+                    if (playerList[startingIndex] != 1)
+                        roundNumber++;
 
-                    remaining++;
-                    remaining %= gameParameter.ChildrenCount;
+                    startingIndex++;
+                    startingIndex %= gameParameter.ChildrenCount;
                 }
+
                 for (var i = 0; i < gameParameter.ChildrenCount; i++)
-                    if (eliminated[i] == 0)
+                    if (playerList[i] == 0)
                         winner = i + 1;
 
                 gameResult.OrderOfElimination = eliminateList.Cast<int>().ToArray();
                 gameResult.LastChild = winner;
 
-                return gameResult;
+                return await Task.FromResult(gameResult);
 
             }
             catch (Exception)
