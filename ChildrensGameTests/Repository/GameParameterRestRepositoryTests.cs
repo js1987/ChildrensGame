@@ -5,12 +5,19 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ChildrensGameTests.Repository
 {
-    /// <summary>
-    /// Summary description for GameParameterRestRepositoryTests
-    /// </summary>
     [TestClass]
     public class GameParameterRestRepositoryTests
     {
+        [TestMethod]
+        [DataRow("https://7annld7mde.execute-api.ap-southeast-2.amazonaws.com/main/game")]
+        public void GameRestRepository_WhenConstructorIsCalled_ShouldSetUrl(String url)
+        {
+            //Arrange & Act
+            var repository = new GameRestRepository(url);
+
+            Assert.AreEqual(repository.Url, url);
+        }
+
         [TestMethod]
         [DataRow("https://7annld7mde.execute-api.ap-southeast-2.amazonaws.com/main/game")]
         public void GetGameParameter_ValidAddress_ShouldReturnNotNull(string url)
