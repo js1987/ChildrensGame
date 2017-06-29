@@ -27,8 +27,8 @@ namespace ChildrensGameTests.Presenter
             var expectGameResult = new GameResult() { LastChild = lastChild, OrderOfElimination = orderOfElimination };
 
             //Assert
-            Assert.IsTrue(actualGameResult.LastChild == expectGameResult.LastChild);
-            CollectionAssert.AreEqual(actualGameResult.OrderOfElimination, expectGameResult.OrderOfElimination);
+            Assert.IsTrue(actualGameResult.Result.LastChild == expectGameResult.LastChild);
+            CollectionAssert.AreEqual(actualGameResult.Result.OrderOfElimination, expectGameResult.OrderOfElimination);
         }
     }
 }

@@ -71,6 +71,7 @@
     <Compile Include="Repository\GameParameterRestRepositoryTests.cs" />
     <Compile Include="Presenter\ChildrensGameManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\ChildrensGameViewTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChildrensGame\ChildrensGame.csproj">

@@ -11,62 +11,51 @@ namespace ChildrensGame.View
         public ChildrensGameView()
         {
             InitializeComponent();
-            lblWinning.Text = "";
+            lblWinner.Text = "";
             rtbChildrenEliminateSequence.Text = "";
             lblPostResult.Text = "";
         }
 
-        /// <summary>
-        /// Sets the number of children.
-        /// </summary>
-        /// <param name="numberOfChildren">The number of children.</param>
-        public void SetNumberOfChildren(decimal numberOfChildren)
+        public string Winner { get { return lblWinner.Text; } set { lblWinner.Text = value; } }
+        public decimal NumberOfChildren
         {
-            nudNumberOfChildren.Value = numberOfChildren;
+            get { return nudNumberOfChildren.Value; }
+            set
+            {
+                if (value > nudNumberOfChildren.Maximum)
+                    nudNumberOfChildren.Maximum = value;
+                nudNumberOfChildren.Value = value;
+            }
         }
 
-        /// <summary>
-        /// Sets the eliminate each.
-        /// </summary>
-        /// <param name="eliminateEach">The eliminate each.</param>
-        public void SetEliminateEach(decimal eliminateEach)
+        public decimal EliminateEach
         {
-            nudEliminateEach.Value = eliminateEach;
+            get { return nudEliminateEach.Value; }
+            set
+            {
+                if (value > nudEliminateEach.Maximum)
+                    nudEliminateEach.Maximum = value;
+                nudEliminateEach.Value = value;
+            }
         }
 
-        /// <summary>
-        /// Sets the children eliminated sequence.
-        /// </summary>
-        /// <param name="eliminatedSequence">The eliminated sequence.</param>
-        public void SetChildrenEliminatedSequence(string eliminatedSequence)
+        public string EliminatedSequence
         {
-            rtbChildrenEliminateSequence.Text = eliminatedSequence;
+            get { return rtbChildrenEliminateSequence.Text; }
+            set
+            {
+                rtbChildrenEliminateSequence.Text = value;
+            }
         }
 
-        /// <summary>
-        /// Sets the winning children.
-        /// </summary>
-        /// <param name="winningChildren">The winning children.</param>
-        public void SetWinningChildren(string winningChildren)
-        {
-            lblWinning.Text = winningChildren;
-        }
-
-        /// <summary>
-        /// Sets the post result.
-        /// </summary>
-        /// <param name="postResult">The post result.</param>
-        public void SetPostResult(string postResult)
-        {
-            lblPostResult.Text = postResult;
-        }
+        public string PostResult { get { return lblPostResult.Text; } set { lblPostResult.Text = value; } }        
 
         /// <summary>
         /// Occurs when [new game button clicked].
         /// </summary>
         public event EventHandler NewGameButtonClicked;
 
-        private void btnNewGame_Click(object sender, System.EventArgs e)
+        private void btnNewGame_Click(object sender, EventArgs e)
         {
             if (NewGameButtonClicked != null) NewGameButtonClicked(sender, e);
         }

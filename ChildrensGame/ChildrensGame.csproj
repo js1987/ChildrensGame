@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\GameParameter.cs" />
+    <Compile Include="Presenter\IChildrensGameManager.cs" />
     <Compile Include="Repository\GameRestRepository.cs" />
     <Compile Include="Model\GameResult.cs" />
     <Compile Include="Model\GameResultPostResponse.cs" />

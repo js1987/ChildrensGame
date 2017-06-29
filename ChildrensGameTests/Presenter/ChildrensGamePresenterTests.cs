@@ -17,15 +17,16 @@ namespace ChildrensGameTests.Presenter
         {
             //Arrange
             var mockView = new Mock<IChildrensGameView>();
-            var mockRepo = new Mock<IGameRepository>();           
-            mockView.Setup(m => m.ShowLoading()).Verifiable();            
-            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object);
+            var mockRepo = new Mock<IGameRepository>();
+            var mockGameManager = new Mock<IChildrensGameManager>();
+            mockView.Setup(m => m.ShowLoading()).Verifiable();
+            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
 
             //Act
             presenter.GameViewNewGameButtonClicked(mockView.Object, EventArgs.Empty);
 
             //Assert
-            mockView.Verify(m=>m.ShowLoading());
+            mockView.Verify(m => m.ShowLoading(), Times.Once);
         }
 
         [TestMethod]
@@ -34,48 +35,49 @@ namespace ChildrensGameTests.Presenter
             //Arrange
             var mockView = new Mock<IChildrensGameView>();
             var mockRepo = new Mock<IGameRepository>();
+            var mockGameManager = new Mock<IChildrensGameManager>();
             mockRepo.Setup(m => m.GetGameParameter()).Verifiable();
-            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object);
+            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
 
             //Act
             presenter.GameViewNewGameButtonClicked(mockView.Object, EventArgs.Empty);
-            
+
             //Assert
-            mockRepo.Verify(m => m.GetGameParameter());
+            mockRepo.Verify(m => m.GetGameParameter(), Times.Once);
         }
 
         [TestMethod]
-        public void GameViewNewGameButtonClicked_WhenButtonClickedAndGameParameterIsNotNull_ShouldCallViewSetNumberOfChildren()
+        public void GameViewNewGameButtonClicked_WhenButtonClickedAndGameParameterIsNotNull_ShouldUpdateViewNumberOfChildren()
         {
             //Arrange
             var mockView = new Mock<IChildrensGameView>();
             var mockRepo = new Mock<IGameRepository>();
-            mockView.Setup(m => m.SetNumberOfChildren(It.IsAny<decimal>())).Verifiable();
+            var mockGameManager = new Mock<IChildrensGameManager>();
             mockRepo.Setup(m => m.GetGameParameter()).Returns(Task.FromResult(new GameParameter()));
-            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object);
+            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
 
             //Act
             presenter.GameViewNewGameButtonClicked(mockView.Object, EventArgs.Empty);
 
             //Assert
-            mockView.Verify(m => m.SetNumberOfChildren(It.IsAny<decimal>()));
+            mockView.VerifySet(m => m.NumberOfChildren = It.IsAny<decimal>(), Times.Once);
         }
 
         [TestMethod]
-        public void GameViewNewGameButtonClicked_WhenButtonClickedAndGameParameterIsNotNull_ShouldCallViewSetEliminateEach()
+        public void GameViewNewGameButtonClicked_WhenButtonClickedAndGameParameterIsNotNull_ShouldUpdateViewEliminateEach()
         {
             //Arrange
             var mockView = new Mock<IChildrensGameView>();
             var mockRepo = new Mock<IGameRepository>();
-            mockView.Setup(m => m.SetEliminateEach(It.IsAny<decimal>())).Verifiable();
+            var mockGameManager = new Mock<IChildrensGameManager>();    
             mockRepo.Setup(m => m.GetGameParameter()).Returns(Task.FromResult(new GameParameter()));
-            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object);
+            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
 
             //Act
             presenter.GameViewNewGameButtonClicked(mockView.Object, EventArgs.Empty);
 
             //Assert
-            mockView.Verify(m => m.SetEliminateEach(It.IsAny<decimal>()));
+            mockView.VerifySet(m => m.EliminateEach = It.IsAny<decimal>(), Times.Once);
         }
 
         [TestMethod]
@@ -86,13 +88,14 @@ namespace ChildrensGameTests.Presenter
             var mockRepo = new Mock<IGameRepository>();
             mockView.Setup(m => m.ShowErrorMessage(It.IsAny<string>())).Verifiable();
             mockRepo.Setup(m => m.GetGameParameter()).Returns(Task.FromResult<GameParameter>(null));
-            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object);
+            var mockGameManager = new Mock<IChildrensGameManager>();
+            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
 
             //Act
             presenter.GameViewNewGameButtonClicked(mockView.Object, EventArgs.Empty);
 
             //Assert
-            mockView.Verify(m => m.ShowErrorMessage(It.IsAny<string>()));
+            mockView.Verify(m => m.ShowErrorMessage(It.IsAny<string>()), Times.Once);
         }
 
         [TestMethod]
@@ -101,15 +104,16 @@ namespace ChildrensGameTests.Presenter
             //Arrange
             var mockView = new Mock<IChildrensGameView>();
             var mockRepo = new Mock<IGameRepository>();
+            var mockGameManager = new Mock<IChildrensGameManager>();
             mockView.Setup(m => m.HideLoading()).Verifiable();
             mockRepo.Setup(m => m.GetGameParameter()).Returns(Task.FromResult<GameParameter>(null));
-            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object);
+            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
 
             //Act
             presenter.GameViewNewGameButtonClicked(mockView.Object, EventArgs.Empty);
-            
+
             //Assert
-            mockView.Verify(m => m.HideLoading());
+            mockView.Verify(m => m.HideLoading(), Times.Once);
         }
 
         [TestMethod]
@@ -118,35 +122,36 @@ namespace ChildrensGameTests.Presenter
             //Arrange
             var mockView = new Mock<IChildrensGameView>();
             var mockRepo = new Mock<IGameRepository>();
+            var mockGameManager = new Mock<IChildrensGameManager>();
             mockView.Setup(m => m.HideLoading()).Verifiable();
             mockRepo.Setup(m => m.GetGameParameter()).Returns(Task.FromResult(new GameParameter()));
             mockRepo.Setup(m => m.SetGameResult(It.IsAny<GameResult>())).Returns(Task.FromResult(new GameResultPostResponse()));
             mockRepo.Setup(m => m.SetGameResult(It.IsAny<GameResult>())).Verifiable();
-            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object);
+            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
 
             //Act
             presenter.GameViewNewGameButtonClicked(mockView.Object, EventArgs.Empty);
 
             //Assert
-            mockRepo.Verify(m => m.SetGameResult(It.IsAny<GameResult>()));
+            mockRepo.Verify(m => m.SetGameResult(It.IsAny<GameResult>()), Times.Once);
         }
 
         [TestMethod]
-        public void GameViewNewGameButtonClicked_WhenButtonClickedAndGamePostResponseIsNotNull_ShouldCallViewSetPostResult()
+        public void GameViewNewGameButtonClicked_WhenButtonClickedAndGamePostResponseIsNotNull_ShouldUpdateViewPostResult()
         {
             //Arrange
             var mockView = new Mock<IChildrensGameView>();
             var mockRepo = new Mock<IGameRepository>();
-            mockView.Setup(m => m.SetPostResult(It.IsAny<string>())).Verifiable();
+            var mockGameManager = new Mock<IChildrensGameManager>();
             mockRepo.Setup(m => m.GetGameParameter()).Returns(Task.FromResult(new GameParameter()));
             mockRepo.Setup(m => m.SetGameResult(It.IsAny<GameResult>())).Returns(Task.FromResult(new GameResultPostResponse()));
-            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object);
+            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
 
             //Act
             presenter.GameViewNewGameButtonClicked(mockView.Object, EventArgs.Empty);
 
             //Assert
-            mockView.Verify(m => m.SetPostResult(It.IsAny<string>()));
+            mockView.VerifySet(m => m.PostResult = It.IsAny<string>(), Times.Once);
         }
 
         [TestMethod]
@@ -155,17 +160,97 @@ namespace ChildrensGameTests.Presenter
             //Arrange
             var mockView = new Mock<IChildrensGameView>();
             var mockRepo = new Mock<IGameRepository>();
+            var mockGameManager = new Mock<IChildrensGameManager>();
             mockView.Setup(m => m.ShowErrorMessage(It.IsAny<string>())).Verifiable();
             mockRepo.Setup(m => m.GetGameParameter()).Returns(Task.FromResult(new GameParameter()));
             mockRepo.Setup(m => m.SetGameResult(It.IsAny<GameResult>())).Returns(Task.FromResult(new GameResultPostResponse()));
-            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object);
+            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
 
             //Act
             presenter.GameViewNewGameButtonClicked(mockView.Object, EventArgs.Empty);
 
             //Assert
-            mockView.Verify(m => m.ShowErrorMessage(It.IsAny<string>()));
+            mockView.Verify(m => m.ShowErrorMessage(It.IsAny<string>()), Times.Once);
         }
+
+        [TestMethod]
+        public void GameViewNewGameButtonClicked_WhenButtonClickedAndGameResultIsNotNull_ShouldUpdateViewWinner()
+        {
+            //Arrange
+            var mockView = new Mock<IChildrensGameView>();
+            var mockRepo = new Mock<IGameRepository>();
+            var mockGameManager = new Mock<IChildrensGameManager>();
+            mockRepo.Setup(m => m.GetGameParameter()).Returns(Task.FromResult(new GameParameter()));
+            mockRepo.Setup(m => m.SetGameResult(It.IsAny<GameResult>())).Returns(Task.FromResult(new GameResultPostResponse()));
+            mockGameManager.Setup(m=>m.CalculateGameResult(It.IsAny<GameParameter>())).Returns(Task.FromResult(new GameResult()));
+            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
+
+            //Act
+            presenter.GameViewNewGameButtonClicked(mockView.Object, EventArgs.Empty);
+
+            //Assert
+            mockView.VerifySet(m => m.Winner = It.IsAny<string>(), Times.Once);
+        }
+
+        [TestMethod]
+        public void GameViewNewGameButtonClicked_WhenButtonClickedAndGameResultIsNotNull_ShouldUpdateViewEliminatedSequence()
+        {
+            //Arrange
+            var mockView = new Mock<IChildrensGameView>();
+            var mockRepo = new Mock<IGameRepository>();
+            var mockGameManager = new Mock<IChildrensGameManager>();
+            mockRepo.Setup(m => m.GetGameParameter()).Returns(Task.FromResult(new GameParameter()));
+            mockRepo.Setup(m => m.SetGameResult(It.IsAny<GameResult>())).Returns(Task.FromResult(new GameResultPostResponse()));
+            mockGameManager.Setup(m => m.CalculateGameResult(It.IsAny<GameParameter>())).Returns(Task.FromResult(new GameResult() {OrderOfElimination = new int[3] {1, 2, 3}}));
+            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
+
+            //Act
+            presenter.GameViewNewGameButtonClicked(mockView.Object, EventArgs.Empty);
+
+            //Assert
+            mockView.VerifySet(m => m.EliminatedSequence = It.IsAny<string>(), Times.Once);
+        }
+
+        [TestMethod]
+        public void GameViewNewGameButtonClicked_WhenButtonClickedAndGameResultIsNull_ShouldCallViewShowErrorMessage()
+        {
+            //Arrange
+            var mockView = new Mock<IChildrensGameView>();
+            var mockRepo = new Mock<IGameRepository>();
+            var mockGameManager = new Mock<IChildrensGameManager>();
+            mockView.Setup(m => m.ShowErrorMessage(It.IsAny<string>())).Verifiable();
+            mockRepo.Setup(m => m.GetGameParameter()).Returns(Task.FromResult(new GameParameter())); 
+            mockRepo.Setup(m => m.SetGameResult(It.IsAny<GameResult>())).Returns(Task.FromResult<GameResultPostResponse>(null));
+            mockGameManager.Setup(m => m.CalculateGameResult(It.IsAny<GameParameter>())).Returns(Task.FromResult(new GameResult() { OrderOfElimination = new int[3] { 1, 2, 3 } }));
+            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
+
+            //Act
+            presenter.GameViewNewGameButtonClicked(mockView.Object, EventArgs.Empty);
+
+            //Assert
+            mockView.Verify(m => m.ShowErrorMessage(It.IsAny<string>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void GameViewNewGameButtonClicked_WhenButtonClickedAndGameResultIsNull_ShouldCallHideLoading()
+        {
+            //Arrange
+            var mockView = new Mock<IChildrensGameView>();
+            var mockRepo = new Mock<IGameRepository>();
+            var mockGameManager = new Mock<IChildrensGameManager>();
+            mockView.Setup(m => m.HideLoading()).Verifiable();
+            mockRepo.Setup(m => m.GetGameParameter()).Returns(Task.FromResult(new GameParameter()));
+            mockRepo.Setup(m => m.SetGameResult(It.IsAny<GameResult>())).Returns(Task.FromResult<GameResultPostResponse>(null));
+            mockGameManager.Setup(m => m.CalculateGameResult(It.IsAny<GameParameter>())).Returns(Task.FromResult(new GameResult() { OrderOfElimination = new int[3] { 1, 2, 3 } }));
+            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
+
+            //Act
+            presenter.GameViewNewGameButtonClicked(mockView.Object, EventArgs.Empty);
+
+            //Assert
+            mockView.Verify(m => m.HideLoading(), Times.Once);
+        }
+
 
         [TestMethod]
         public void GameViewNewGameButtonClicked_WhenButtonClicked_ShouldCallHideLoading()
@@ -173,14 +258,15 @@ namespace ChildrensGameTests.Presenter
             //Arrange
             var mockView = new Mock<IChildrensGameView>();
             var mockRepo = new Mock<IGameRepository>();
+            var mockGameManager = new Mock<IChildrensGameManager>();
             mockView.Setup(m => m.HideLoading()).Verifiable();
-            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object);
+            var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
 
             //Act
             presenter.GameViewNewGameButtonClicked(mockView.Object, EventArgs.Empty);
-            
+
             //Assert
-            mockView.Verify(m => m.HideLoading());
+            mockView.Verify(m => m.HideLoading(), Times.Once);
         }
     }
 }

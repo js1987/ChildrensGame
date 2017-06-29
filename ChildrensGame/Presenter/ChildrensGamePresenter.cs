@@ -8,16 +8,19 @@ namespace ChildrensGame.Presenter
     {
         private readonly IChildrensGameView _gameView;
         private readonly IGameRepository _gameRepository;
+        private readonly IChildrensGameManager _gameManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ChildrensGamePresenter"/> class.
         /// </summary>
         /// <param name="gameView">The game view.</param>
         /// <param name="gameRepository">The game repository.</param>
-        public ChildrensGamePresenter(IChildrensGameView gameView, IGameRepository gameRepository)
+        /// <param name="gameManager">The game manager.</param>
+        public ChildrensGamePresenter(IChildrensGameView gameView, IGameRepository gameRepository, IChildrensGameManager gameManager)
         {
             _gameView = gameView;
             _gameRepository = gameRepository;
+            _gameManager = gameManager;
             _gameView.NewGameButtonClicked += GameViewNewGameButtonClicked;
         }
 
@@ -29,8 +32,8 @@ namespace ChildrensGame.Presenter
             var gameParameter = await _gameRepository.GetGameParameter();
             if (gameParameter != null)
             {
-                _gameView.SetNumberOfChildren(gameParameter.ChildrenCount);
-                _gameView.SetEliminateEach(gameParameter.EliminateEach);
+                _gameView.NumberOfChildren = gameParameter.ChildrenCount;
+                _gameView.EliminateEach = gameParameter.EliminateEach;
             }
             else
             {
@@ -40,21 +43,20 @@ namespace ChildrensGame.Presenter
             }
 
             //Calculate game result
-            var gameManager = new ChildrensGameManager();
-            var gameResult = gameManager.CalculateGameResult(gameParameter);
+            var gameResult = await _gameManager.CalculateGameResult(gameParameter);
             if (gameResult != null)
             {
                 //Display winning
-                _gameView.SetWinningChildren(gameResult.LastChild.ToString());
+                _gameView.Winner = gameResult.LastChild.ToString();
 
                 //Display eliminated list
-                string eliminateSeq = "";
+                var eliminateSeq = "";
                 for (var i = 0; i < gameResult.OrderOfElimination.Length; i++)
                 {
                     eliminateSeq += gameResult.OrderOfElimination[i].ToString();
                     eliminateSeq += i != gameResult.OrderOfElimination.Length - 1 ? ", " : "";
                 }
-                _gameView.SetChildrenEliminatedSequence(eliminateSeq);
+                _gameView.EliminatedSequence = eliminateSeq;
             }
             else
             {
@@ -65,7 +67,7 @@ namespace ChildrensGame.Presenter
             //Post game result
             var resultResponse = await _gameRepository.SetGameResult(gameResult);
             if (resultResponse != null)
-                _gameView.SetPostResult($@"{resultResponse.Id}, {resultResponse.Message}");
+                _gameView.PostResult = $@"{resultResponse.Id}, {resultResponse.Message}";
             else
                 _gameView.ShowErrorMessage("Unable to post game result.");
 

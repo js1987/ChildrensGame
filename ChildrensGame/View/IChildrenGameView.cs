@@ -4,12 +4,14 @@ namespace ChildrensGame.View
 {
     public interface IChildrensGameView
     {
-        void SetNumberOfChildren(decimal numberOfChildren);
-        void SetEliminateEach(decimal eliminateEach);
-        void SetChildrenEliminatedSequence(string eliminatedSequence);
-        void SetWinningChildren(string winningChildren);
+        string Winner { get; set; }
+        decimal NumberOfChildren { get; set; }
+        decimal EliminateEach { get; set; }
+        string EliminatedSequence { get; set; }
+        string PostResult { get; set; }
+
+
         void ShowLoading();
-        void SetPostResult(string postResult);
         void HideLoading();
         void ShowErrorMessage(string errorMessage);
         event EventHandler NewGameButtonClicked;

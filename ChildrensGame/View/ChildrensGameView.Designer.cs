@@ -36,7 +36,7 @@
             this.gbInput = new System.Windows.Forms.GroupBox();
             this.gbOutput = new System.Windows.Forms.GroupBox();
             this.rtbChildrenEliminateSequence = new System.Windows.Forms.RichTextBox();
-            this.lblWinning = new System.Windows.Forms.Label();
+            this.lblWinner = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnNewGame = new System.Windows.Forms.Button();
@@ -110,7 +110,7 @@
             // gbOutput
             // 
             this.gbOutput.Controls.Add(this.rtbChildrenEliminateSequence);
-            this.gbOutput.Controls.Add(this.lblWinning);
+            this.gbOutput.Controls.Add(this.lblWinner);
             this.gbOutput.Controls.Add(this.label4);
             this.gbOutput.Controls.Add(this.label3);
             this.gbOutput.Location = new System.Drawing.Point(9, 207);
@@ -136,15 +136,15 @@
             this.rtbChildrenEliminateSequence.TabStop = false;
             this.rtbChildrenEliminateSequence.Text = "{{Eliminate Sequence}}";
             // 
-            // lblWinning
+            // lblWinner
             // 
-            this.lblWinning.AutoSize = true;
-            this.lblWinning.Location = new System.Drawing.Point(53, 15);
-            this.lblWinning.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblWinning.Name = "lblWinning";
-            this.lblWinning.Size = new System.Drawing.Size(62, 13);
-            this.lblWinning.TabIndex = 2;
-            this.lblWinning.Text = "{{Winning}}";
+            this.lblWinner.AutoSize = true;
+            this.lblWinner.Location = new System.Drawing.Point(53, 15);
+            this.lblWinner.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblWinner.Name = "lblWinner";
+            this.lblWinner.Size = new System.Drawing.Size(62, 13);
+            this.lblWinner.TabIndex = 2;
+            this.lblWinner.Text = "{{Winning}}";
             // 
             // label4
             // 
@@ -271,7 +271,7 @@
         private System.Windows.Forms.NumericUpDown nudEliminateEach;
         private System.Windows.Forms.GroupBox gbInput;
         private System.Windows.Forms.GroupBox gbOutput;
-        private System.Windows.Forms.Label lblWinning;
+        private System.Windows.Forms.Label lblWinner;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox rtbChildrenEliminateSequence;

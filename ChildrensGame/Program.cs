@@ -23,8 +23,11 @@ namespace ChildrensGame
             //Intialise repository
             IGameRepository repository = new GameRestRepository(Properties.Settings.Default.GameParameterAPIAddress);
 
+            //Initialise game manager
+            IChildrensGameManager gameManager = new ChildrensGameManager();
+
             //Initialise presenter
-            var presenter = new ChildrensGamePresenter(view, repository);     
+            var presenter = new ChildrensGamePresenter(view, repository, gameManager);     
             Application.Run(view);
         }
     }
