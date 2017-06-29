@@ -41,7 +41,7 @@ namespace ChildrensGameTests.Repository
         }
 
         [TestMethod]
-        [DataRow("https://7annld7mde.execute-api.ap-southeast-2.amazonaws.com/main/game", 81380, 3, new int[2] { 1, 2 })]
+        [DataRow("https://7annld7mde.execute-api.ap-southeast-2.amazonaws.com/main/game", 81380, 3, new [] { 1, 2 })]
         public void SetGameResult_ValidResult_ShouldReturnSavedMessage(string url, int id, int lastChild, int[] orderOfElimination)
         {
             //Arrange
@@ -62,7 +62,7 @@ namespace ChildrensGameTests.Repository
         }
 
         [TestMethod]
-        [DataRow("https://7annld7mde.execute-api.ap-southeast-2.amazonaws.com/main/gam", 81380, 3, new int[2] { 1, 2 })]
+        [DataRow("https://7annld7mde.execute-api.ap-southeast-2.amazonaws.com/main/gam", 81380, 3, new [] { 1, 2 })]
         public void SetGameResult_InvalidUrl_ShouldReturnNull(string url, int id, int lastChild, int[] orderOfElimination)
         {
             //Arrange

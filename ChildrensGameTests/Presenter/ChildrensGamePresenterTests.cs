@@ -201,7 +201,7 @@ namespace ChildrensGameTests.Presenter
             var mockGameManager = new Mock<IChildrensGameManager>();
             mockRepo.Setup(m => m.GetGameParameter()).Returns(Task.FromResult(new GameParameter()));
             mockRepo.Setup(m => m.SetGameResult(It.IsAny<GameResult>())).Returns(Task.FromResult(new GameResultPostResponse()));
-            mockGameManager.Setup(m => m.CalculateGameResult(It.IsAny<GameParameter>())).Returns(Task.FromResult(new GameResult() {OrderOfElimination = new int[3] {1, 2, 3}}));
+            mockGameManager.Setup(m => m.CalculateGameResult(It.IsAny<GameParameter>())).Returns(Task.FromResult(new GameResult() {OrderOfElimination = new [] {1, 2, 3}}));
             var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
 
             //Act
@@ -221,7 +221,7 @@ namespace ChildrensGameTests.Presenter
             mockView.Setup(m => m.ShowErrorMessage(It.IsAny<string>())).Verifiable();
             mockRepo.Setup(m => m.GetGameParameter()).Returns(Task.FromResult(new GameParameter())); 
             mockRepo.Setup(m => m.SetGameResult(It.IsAny<GameResult>())).Returns(Task.FromResult<GameResultPostResponse>(null));
-            mockGameManager.Setup(m => m.CalculateGameResult(It.IsAny<GameParameter>())).Returns(Task.FromResult(new GameResult() { OrderOfElimination = new int[3] { 1, 2, 3 } }));
+            mockGameManager.Setup(m => m.CalculateGameResult(It.IsAny<GameParameter>())).Returns(Task.FromResult(new GameResult() { OrderOfElimination = new [] { 1, 2, 3 } }));
             var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
 
             //Act
@@ -241,7 +241,7 @@ namespace ChildrensGameTests.Presenter
             mockView.Setup(m => m.HideLoading()).Verifiable();
             mockRepo.Setup(m => m.GetGameParameter()).Returns(Task.FromResult(new GameParameter()));
             mockRepo.Setup(m => m.SetGameResult(It.IsAny<GameResult>())).Returns(Task.FromResult<GameResultPostResponse>(null));
-            mockGameManager.Setup(m => m.CalculateGameResult(It.IsAny<GameParameter>())).Returns(Task.FromResult(new GameResult() { OrderOfElimination = new int[3] { 1, 2, 3 } }));
+            mockGameManager.Setup(m => m.CalculateGameResult(It.IsAny<GameParameter>())).Returns(Task.FromResult(new GameResult() { OrderOfElimination = new [] { 1, 2, 3 } }));
             var presenter = new ChildrensGamePresenter(mockView.Object, mockRepo.Object, mockGameManager.Object);
 
             //Act
